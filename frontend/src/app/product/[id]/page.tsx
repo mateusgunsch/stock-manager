@@ -19,15 +19,23 @@ export default function ProductPage() {
 
 
     return (
-        <>
-            <div>
-                <h1 className="text-2xl font-bold">{product.name}</h1>
-                <p>Preço: R$ {product.price}</p>
-                <p>Quantidade: {product.quantity}</p>
+        <div className='flex flex-col gap-4 container text-center w-full max-w-lg m-auto mt-10 border rounded-lg p-4'>
+            <h1 className="text-2xl font-bold">{product.name}</h1>
+            <p>Preço: R$ {product.price}</p>
+            <p>Quantidade: {product.quantity}</p>
+            <div className='flex flex-col flex-wrap gap-3 md:flex-row place-items-center justify-center'>
+                <LinkButton
+                href={`${product._id}/edit`}
+                text="Editar"
+                classes="bg-indigo-500 hover:bg-indigo-600 text-white font-medium flex-1 hover:cursor-pointer"
+                />
+                <DelButton id={product._id} />
+                <LinkButton
+                href='/'
+                text="Início"
+                classes="bg-indigo-500 hover:bg-indigo-600 text-white font-medium flex-1 hover:cursor-pointer"
+                />
             </div>
-            <LinkButton href={`${product._id}/edit`} text='Editar' classes='bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold p-2 m-3' />
-            <DelButton id={product._id} />
-            <LinkButton href='/' text='Início' classes='bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold p-2 m-3' />
-        </>
+        </div>
     );
 }

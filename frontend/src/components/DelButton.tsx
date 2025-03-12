@@ -12,7 +12,7 @@ const DelButton = ( { id } : { id: string }) => {
     }
 
     return (
-        <Button onClick={handleDelete} variant="destructive" className="font-medium flex-1 hover:cursor-pointer bg-red-700"> <Trash2 className="h-4 w-4" /> Deletar</Button>
+        <Button onClick={handleDelete} variant="destructive" className="font-medium hover:cursor-pointer max-w-fit bg-red-700 transition-all duration-200"> <Trash2 className="h-4 w-4" /> Deletar</Button>
     )
 }
 

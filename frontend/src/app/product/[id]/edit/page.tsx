@@ -28,7 +28,7 @@ const EditProduct = () => {
     };
 
     return (
-        <div className='container w-1/4 m-auto mt-10 p-4 border rounded'>
+        <div className='container w-full max-w-lg m-auto mt-10 p-4 border rounded'>
             <h1 className="text-2xl font-bold mb-4">Editar Produto</h1>
             <form onSubmit={handleUpdate} className="space-y-4">
                 <Label htmlFor="name">Nome:</Label>
