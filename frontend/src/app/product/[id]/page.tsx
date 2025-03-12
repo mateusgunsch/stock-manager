@@ -21,9 +21,10 @@ export default function ProductPage() {
     return (
         <div className='flex flex-col gap-4 container text-center w-full max-w-lg m-auto mt-10 border rounded-lg p-4'>
             <h1 className="text-2xl font-bold">{product.name}</h1>
-            <p>Preço: R$ {product.price}</p>
-            <p>Quantidade: {product.quantity}</p>
-            <div className='flex flex-col flex-wrap gap-3 md:flex-row place-items-center justify-center'>
+            <p><span className='font-bold'>Preço:</span> R$ {product.price}</p>
+            <p><span className='font-bold'>Quantidade:</span> {product.quantity}</p>
+            <p><span className='font-bold'>Descrição:</span> {product.description}</p>
+            <div className='flex flex-col flex-wrap gap-3 md:flex-row place-items-center justify-center mt-6'>
                 <LinkButton
                 href={`${product._id}/edit`}
                 text="Editar"

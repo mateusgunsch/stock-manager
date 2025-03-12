@@ -4,6 +4,7 @@ import LinkButton from "@/components/LinkButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Product } from "@/interface/Product";
 import { fetchProductById, updateProduct } from "@/services/api";
 import { useParams } from "next/navigation";
@@ -24,7 +25,6 @@ const EditProduct = () => {
     const handleUpdate = async (e: any) => {
         e.preventDefault();
         await updateProduct(id, product);
-        alert('Produto Atualizado!');
     };
 
     return (
@@ -33,6 +33,7 @@ const EditProduct = () => {
             <form onSubmit={handleUpdate} className="space-y-4">
                 <Label htmlFor="name">Nome:</Label>
                 <Input
+                    id="name"
                     className="border p-2 w-full" 
                     placeholder="Nome do Produto" 
                     value={product.name} 
@@ -40,7 +41,8 @@ const EditProduct = () => {
                 />
 
                 <Label htmlFor="price">Preço:</Label>
-                <Input 
+                <Input
+                    id="price"
                     type='number'
                     step={0.01}
                     className="border p-2 w-16" 
@@ -51,11 +53,20 @@ const EditProduct = () => {
 
                 <Label htmlFor="quantity">Quantidade:</Label>
                 <Input
+                    id="quantity"
                     type='number'
                     className="border p-2 w-16" 
                     placeholder="Quantidade"
                     value={product.quantity} 
                     onChange={(e) => setProduct({ ...product, quantity: Number(e.target.value) })} 
+                />
+
+                <Label htmlFor="desc">Descrição: (Opcional)</Label>
+                <Textarea
+                    id='desc'
+                    placeholder='Descrição do Produto...'
+                    value={product.description}
+                    onChange={(e) => setProduct({ ...product, description: e.target.value })}
                 />
 
                 <Button type="submit" className="bg-indigo-500 hover:bg-indigo-600 hover:cursor-pointer text-white font-bold p-2 w-full">Salvar</Button>

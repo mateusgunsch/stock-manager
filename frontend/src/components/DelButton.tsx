@@ -7,7 +7,6 @@ const DelButton = ( { id } : { id: string }) => {
     const handleDelete = async () => {
         if (confirm('Voce realmente deseja deletar esse produto?')) {
             await deleteProduct(id);
-            alert('Produto Removido!');
         }
     }
 
