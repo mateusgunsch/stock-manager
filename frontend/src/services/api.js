@@ -21,13 +21,17 @@ export async function fetchProductById(id) {
     return res.json();
 }
 
-export async function updateProduct(id, product) {
+export async function updateProduct(id, product, redirect = true) {
+    if(product.quantity === 0) {
+        deleteProduct(id);
+        return
+    }
     await fetch(`${API_URL}/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(product),
     });
-    redirect(`/product/${id}`);
+    if(redirect) redirect(`/product/${id}`);
 }
 
 export async function deleteProduct(id) {

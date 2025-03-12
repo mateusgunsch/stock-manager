@@ -1,4 +1,4 @@
-import { Product } from "@/interface/Product"
+import type { Product } from "@/interface/Product"
 import { Card, CardContent } from "./ui/card"
 import { BarChart3, Package } from "lucide-react"
 
