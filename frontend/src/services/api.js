@@ -21,7 +21,7 @@ export async function fetchProductById(id) {
     return res.json();
 }
 
-export async function updateProduct(id, product, redirect = true) {
+export async function updateProduct(id, product, redirected = true) {
     if(product.quantity === 0) {
         deleteProduct(id);
         return
@@ -31,7 +31,7 @@ export async function updateProduct(id, product, redirect = true) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(product),
     });
-    if(redirect) redirect(`/product/${id}`);
+    if(redirected) redirect(`/product/${id}`);
 }
 
 export async function deleteProduct(id) {

@@ -1,5 +1,9 @@
 'use client';
 
+import LinkButton from "@/components/LinkButton";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Product } from "@/interface/Product";
 import { fetchProductById, updateProduct } from "@/services/api";
 import { useParams } from "next/navigation";
@@ -24,38 +28,40 @@ const EditProduct = () => {
     };
 
     return (
-        <>
+        <div className='container w-1/4 m-auto mt-10 p-4 border rounded'>
+            <h1 className="text-2xl font-bold mb-4">Editar Produto</h1>
             <form onSubmit={handleUpdate} className="space-y-4">
-                <label htmlFor="name">Nome: </label>
-                <input
-                className="border p-2 w-full"
-                placeholder="Nome do Produto"
-                value={product.name}
-                onChange={(e) => setProduct({ ...product, name: e.target.value })}
+                <Label htmlFor="name">Nome:</Label>
+                <Input
+                    className="border p-2 w-full" 
+                    placeholder="Nome do Produto" 
+                    value={product.name} 
+                    onChange={(e) => setProduct({ ...product, name: e.target.value })} 
                 />
 
-                <label htmlFor="price">Preço: </label>
-                <input
-                className="border p-2 w-full"
-                placeholder="Preço"
-                value={product.price}
-                onChange={(e) => setProduct({ ...product, price: Number(e.target.value) })}
+                <Label htmlFor="price">Preço:</Label>
+                <Input 
+                    type='number'
+                    step={0.01}
+                    className="border p-2 w-16" 
+                    placeholder="Preço" 
+                    value={product.price} 
+                    onChange={(e) => setProduct({ ...product, price: Number(e.target.value) })}
                 />
 
-                <label htmlFor="quantity">Quantidade: </label>
-                <input
-                className="border p-2 w-full"
-                placeholder="Quantidade"
-                value={product.quantity}
-                onChange={(e) => setProduct({ ...product, quantity: Number(e.target.value) })}
+                <Label htmlFor="quantity">Quantidade:</Label>
+                <Input
+                    type='number'
+                    className="border p-2 w-16" 
+                    placeholder="Quantidade"
+                    value={product.quantity} 
+                    onChange={(e) => setProduct({ ...product, quantity: Number(e.target.value) })} 
                 />
 
-                <button type="submit" className="bg-blue-500 text-white p-2 hover:cursor-pointer hover:bg-blue-700 rounded">
-                Salvar
-                </button>
+                <Button type="submit" className="bg-indigo-500 hover:bg-indigo-600 hover:cursor-pointer text-white font-bold p-2 w-full">Salvar</Button>
             </form>
-            <a href={`/product/${id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded px-2 py-1">Cancelar</a>
-        </>
+            <LinkButton href={`/product/${id}`} text='Cancelar' classes='bg-indigo-500 hover:bg-indigo-600 hover:cursor-pointer text-white font-bold p-2 mt-6 w-full' />
+        </div>
     );
 };
 

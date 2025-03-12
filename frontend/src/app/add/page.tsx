@@ -47,9 +47,9 @@ export default function AddProduct() {
                     onChange={(e) => setProduct({ ...product, quantity: Number(e.target.value) })} 
                 />
 
-            <Button type="submit" className="bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold p-2 w-full">Salvar</Button>
+            <Button type="submit" className="bg-indigo-500 hover:bg-indigo-600 hover:cursor-pointer text-white font-bold p-2 w-full">Salvar</Button>
         </form>
-        <LinkButton href='/' text='Voltar' classes='bg-blue-500 hover:bg-blue-700 hover:cursor-pointer text-white font-bold p-2 mt-6 w-full' />
+        <LinkButton href='/' text='Voltar' classes='bg-indigo-500 hover:bg-indigo-600 hover:cursor-pointer text-white font-bold p-2 mt-6 w-full' />
         </div>
     );
 }
