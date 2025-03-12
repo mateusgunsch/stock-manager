@@ -1,24 +1,31 @@
 'use client'
 import type { Product } from '@/interface/Product';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { fetchProducts } from '../services/api';
 import LinkButton from '@/components/LinkButton';
 import AllProductCount from '@/components/AllProductCount';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ProductGrid from '@/components/ProductGrid';
+import LowQuant from '@/components/LowQuant';
 
 export default function Home() {
     const [products, setProducts] = useState<Product[]>([]);
 
+    const refreshProducts = useCallback(async () => {
+        const data = await fetchProducts()
+        setProducts(data)
+    }, [])
+
     useEffect(() => {
-        fetchProducts().then(setProducts);
-    }, [products]);
+        refreshProducts()
+    }, [products, refreshProducts])
 
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="mb-8">
                 <AllProductCount products={products} />
+                
             </div>
 
             <Card className="max-w-5xl mx-auto shadow-lg pt-0">
@@ -34,6 +41,7 @@ export default function Home() {
                     <ProductGrid products={products} />
                 </CardContent>
             </Card>
+            <LowQuant products={products} />
         </div>
     );
 }

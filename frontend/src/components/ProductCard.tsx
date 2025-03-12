@@ -5,6 +5,7 @@ import DelButton from "@/components/DelButton"
 import { Button } from "./ui/button"
 import { updateProduct } from "@/services/api"
 
+import '../styles/mediaButtons.css'
 
 const ProductCard = ({ product }: {product: Product}) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,7 +15,7 @@ const ProductCard = ({ product }: {product: Product}) => {
     };
 
     return (
-        <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-200 max-w-5xl min-w-full mx-auto pt-0 flex justify-between">
+        <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-200 max-w-5xl w-full mx-auto pt-0 flex justify-between min-h-full">
         <CardHeader className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 pb-2 text-center text-pretty">
             <CardTitle className="text-lg font-medium bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
             {product.name}
@@ -32,7 +33,7 @@ const ProductCard = ({ product }: {product: Product}) => {
             </div>
             </div>
         </CardContent>
-        <CardFooter className="flex justify-between gap-2 pt-2">
+        <CardFooter className="flex mediaButtons justify-between gap-2 pt-2">
             <LinkButton
             href={`/product/${product._id}`}
             text="Detalhes"
