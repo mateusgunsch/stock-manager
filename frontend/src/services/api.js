@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 
-const API_URL =  "http://localhost:3001/products";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const fetchProducts = async () => {
+    console.log(API_URL)
     const response = await fetch(`${API_URL}`);
     return response.json();
 };

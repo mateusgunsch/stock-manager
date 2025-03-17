@@ -108,7 +108,7 @@ const ProductGrid = ({ products: initialProducts, productsPerPage = 6 }: {produc
                 variant="outline"
                 onClick={goToPreviousPage}
                 disabled={currentPage === 1}
-                className="flex items-center gap-1"
+                className="flex items-center gap-1 hover:cursor-pointer"
                 >
                 <ChevronLeft className="h-4 w-4" />
                 Anterior
@@ -120,7 +120,7 @@ const ProductGrid = ({ products: initialProducts, productsPerPage = 6 }: {produc
                         key={i + 1}
                         variant={currentPage === i + 1 ? "default" : "outline"}
                         size="sm"
-                        className="w-8 h-8 p-0"
+                        className={`w-8 h-8 p-0 ${currentPage === i + 1 ? "" : "hover:cursor-pointer"}`}
                         onClick={() => setCurrentPage(i + 1)}
                         >
                         {i + 1}
@@ -132,7 +132,7 @@ const ProductGrid = ({ products: initialProducts, productsPerPage = 6 }: {produc
                     variant="outline"
                     onClick={goToNextPage}
                     disabled={currentPage === totalPages}
-                    className="flex items-center gap-1"
+                    className="flex items-center gap-1 hover:cursor-pointer"
                     >
                     Próxima
                     <ChevronRight className="h-4 w-4" />
