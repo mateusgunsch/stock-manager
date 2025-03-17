@@ -4,7 +4,6 @@ import { getSession } from "next-auth/react";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const fetchProducts = async () => {
-    console.log(API_URL)
     const response = await fetch(`${API_URL}`);
     return response.json();
 };

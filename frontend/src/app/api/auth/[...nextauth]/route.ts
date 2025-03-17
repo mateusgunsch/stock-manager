@@ -11,12 +11,12 @@ export const authOptions: AuthOptions = {
         },
         async authorize(credentials) {
             if (
-            credentials?.username === process.env.ADMIN_USER &&
-            credentials?.password === process.env.ADMIN_PASSWORD
+                credentials?.username === process.env.ADMIN_USER &&
+                credentials?.password === process.env.ADMIN_PASSWORD
             ) {
-            return { id: "1", name: "Admin" };
+                return { id: "1", name: "Admin" };
             }
-            return null;
+                return null;
         },
         }),
     ],
@@ -24,8 +24,9 @@ export const authOptions: AuthOptions = {
         signIn: "/login",
     },
     session: {
-        strategy: "jwt", // ✅ Corrigido aqui
+        strategy: "jwt",
     },
+    
     secret: process.env.NEXTAUTH_SECRET,
 };
 
