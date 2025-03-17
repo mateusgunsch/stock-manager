@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { getSession } from "next-auth/react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -9,6 +10,12 @@ export const fetchProducts = async () => {
 };
 
 export async function addProduct(product) {
+    const session = await getSession();
+    if (!session) {
+        alert('Você precisa estar logado para adicionar um produto!');
+        return;
+    }
+
     if (product.name === '' || product.quantity === 0 || product.price === 0) {
         const err = new Error(`O nome não pode ser vazio.\nA quantidade deve ser maior que 0.\nO preço deve ser maior que 0.`)
         alert(err.message)
@@ -16,7 +23,10 @@ export async function addProduct(product) {
     }
     await fetch(`${API_URL}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${session.user.token}`,
+        },
         body: JSON.stringify(product),
     });
     alert('Produto Adicionado!');
@@ -29,13 +39,22 @@ export async function fetchProductById(id) {
 }
 
 export async function updateProduct(id, product, redirected = true) {
+    const session = await getSession();
+    if (!session) {
+        alert('Você precisa estar logado para editar um produto!');
+        return;
+    }
+
     if(product.quantity === 0) {
         deleteProduct(id);
         return
     }
     await fetch(`${API_URL}/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${session.user.token}`,
+        },
         body: JSON.stringify(product),
     });
     if(redirected){
@@ -45,8 +64,18 @@ export async function updateProduct(id, product, redirected = true) {
 }
 
 export async function deleteProduct(id) {
+    const session = await getSession();
+    if (!session) {
+        alert('Você precisa estar logado para deletar um produto!');
+        return;
+    }
+
     await fetch(`${API_URL}/${id}`, {
         method: 'DELETE',
+        headers: { 
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${session.user.token}`,
+        },
     });
     alert('Produto Removido!');
     redirect('/');

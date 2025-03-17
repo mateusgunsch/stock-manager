@@ -1,17 +1,25 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { addProduct } from '@/services/api';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import LinkButton from '@/components/LinkButton';
 import { Textarea } from '@/components/ui/textarea';
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function AddProduct() {
     const [product, setProduct] = useState({name: '', price: 0, quantity: 0, description: ''});
+    const { status } = useSession();
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleSubmit = async (e: any) => {
+    useEffect(() => {
+        if (status === "unauthenticated") {
+            redirect('/login');
+        }
+    }, [status]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         await addProduct(product);
     };

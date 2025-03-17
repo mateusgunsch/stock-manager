@@ -7,12 +7,20 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Product } from "@/interface/Product";
 import { fetchProductById, updateProduct } from "@/services/api";
-import { useParams } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { redirect, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const EditProduct = () => {
     const { id } = useParams();
     const [product, setProduct] = useState<Product | null>(null);
+    const { status } = useSession();
+    
+    useEffect(() => {
+        if (status === "unauthenticated") {
+            redirect('/login');
+        }
+    }, [status]);
 
     useEffect(() => {
         fetchProductById(id).then(setProduct);
@@ -21,8 +29,7 @@ const EditProduct = () => {
 
     if (!product) return <p>Carregando...</p>;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleUpdate = async (e: any) => {
+    const handleUpdate = async (e: React.FormEvent) => {
         e.preventDefault();
         await updateProduct(id, product);
     };
