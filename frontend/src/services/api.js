@@ -24,7 +24,7 @@ export async function addProduct(product) {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',
-            "Authorization": `Bearer ${session.user.token}`,
+            "Authorization": `Bearer ${session.user.accessToken}`,
         },
         body: JSON.stringify(product),
     });
@@ -52,7 +52,7 @@ export async function updateProduct(id, product, redirected = true) {
         method: 'PUT',
         headers: { 
             'Content-Type': 'application/json',
-            "Authorization": `Bearer ${session.user.token}`,
+            "Authorization": `Bearer ${session.user.accessToken}`,
         },
         body: JSON.stringify(product),
     });
@@ -73,7 +73,7 @@ export async function deleteProduct(id) {
         method: 'DELETE',
         headers: { 
             'Content-Type': 'application/json',
-            "Authorization": `Bearer ${session.user.token}`,
+            "Authorization": `Bearer ${session.user.accessToken}`,
         },
     });
     alert('Produto Removido!');
