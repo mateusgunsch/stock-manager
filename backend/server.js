@@ -22,10 +22,8 @@ app.use((req, res, next) => {
     next();
 });
 app.use(express.json());
-app.use('/products', productRoutes);
-app.get('/test-cors', (req, res) => {
-    res.json({ message: 'CORS is working!' });
-});
+app.use('/api/products', productRoutes);
+
 
 // seedProducts();
 
