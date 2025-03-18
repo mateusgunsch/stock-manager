@@ -10,7 +10,7 @@ connectDB();
 
 const app = express();
 app.use(cors({
-    origin: 'https://stock-manager-frontend-iota.vercel.app',
+    origin: process.env.FRONTEND_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
