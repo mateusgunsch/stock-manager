@@ -3,8 +3,6 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./src/config/db');
 const productRoutes = require('./src/routes/productRoutes');
-const seedProducts = require('./src/utils/seedProducts');
-const Product = require('./src/models/Product');
 
 
 dotenv.config();

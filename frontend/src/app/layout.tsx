@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Gerenciador de Estoque',
   description: 'Sistema para controle de estoque',
+  icons: {
+    icon: '/icons8-box.svg',
+  }
 };
 
 export default function RootLayout({
