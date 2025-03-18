@@ -16,6 +16,10 @@ app.use(cors({
 }));
 app.options("*", cors());
 
+app.get("/api/test", (req, res) => {
+    res.json({ message: "Backend is working!" })
+})
+
 app.use(express.json());
 app.use('/api/products', productRoutes);
 
