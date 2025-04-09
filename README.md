@@ -10,7 +10,7 @@
 🔹 **Frontend (Vercel):** https://stock-manager-frontend-iota.vercel.app
 
 ## 📸 Screenshots
-![Tela do principal](https://i.imgur.com/hG55RfA.png)
+![Tela principal](https://i.imgur.com/hG55RfA.png)
 ![Adicionar produto](https://i.imgur.com/xyPyvam.png)
 ![Detalhes](https://i.imgur.com/0MtvaBO.png)
 ![Editar produto](https://i.imgur.com/C4lXSIg.png)
